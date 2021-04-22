@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:InverntoryManager.MarkupExtension"
+             mc:Ignorable="d"
+             x:Class="InverntoryManager.Pages.HomePage"
+             Title="Home">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" BackgroundColor="Crimson">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="1" Grid.Column="1" Source="{local:EmbeddedImage ResourceId=InverntoryManager.Image.WesternLogo.png}"/>
+                <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                    <Label Text="Hello" FontAttributes="Bold"  FontSize="Body" TextColor="White"/>
+                    <Label FontSize="Body" x:Name="profile"
+                           TextColor="White" FontAttributes="Bold"/>
+                </StackLayout>
+            </Grid>
+            <Label Text="Recently add Items" Grid.Row="1" VerticalOptions="End" Margin="33,0,0,0" 
+                   TextColor="Black" FontSize="18"/>
+            <ScrollView Grid.Row="2">
+                <CollectionView x:Name="itemCollectionView" 
+                      Margin="10" SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="3" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="60"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"/>
+                                    <RowDefinition Height="35"/>
+                                    <RowDefinition Height="35"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding ImageUrl}" Grid.ColumnSpan="2" 
+                                       Aspect="AspectFill" HeightRequest="60" WidthRequest="60"/>
+                                <Label Text="{Binding Name}" Grid.Row="1" FontAttributes="Bold" Grid.RowSpan="2" VerticalOptions="StartAndExpand"/>
+                                <StackLayout Grid.Column="0" Grid.Row="2" Orientation="Horizontal" Grid.RowSpan="2" VerticalOptions="StartAndExpand">
+                                    <Label Text="Stock:" FontSize="12"/>
+                                    <Label Text="{Binding Stock}"  FontSize="12"/>
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

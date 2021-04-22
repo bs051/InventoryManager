@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="InverntoryManager.Pages.InventoryPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" IconImageSource="add.png" Clicked="OnAdd_Clicked"/>
+        <ToolbarItem Text="Update" IconImageSource="update.png" Clicked="Update_Clicked" />
+        <ToolbarItem Text="Delete" IconImageSource="trash.png" Clicked="Delete_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Padding="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <SearchBar x:Name="SearchBar" Grid.Column="0" Placeholder="Search" TextChanged="SearchBar_TextChanged" />
+                <CheckBox Grid.Column="1" x:Name="MultiSelect"/>
+            </Grid>
+            <CollectionView x:Name="itemCollectionView" 
+                      Margin="10" SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="35"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="{Binding ImageUrl}" Grid.RowSpan="2" 
+                                       Aspect="AspectFill" HeightRequest="60" WidthRequest="60"/>
+                            <Label Text="{Binding Name}" Grid.Column="1" FontAttributes="Bold"/>
+                            <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                                <Label Text="Stock:" FontSize="12"/>
+                                <Label Text="{Binding Stock}"  FontSize="12"/>
+                            </StackLayout>
+                            <CheckBox IsChecked="{Binding Selected}" 
+                                      Grid.Row="1" Grid.Column="2" Grid.RowSpan="2"
+                                      IsVisible="{Binding Source={x:Reference MultiSelect}, Path= IsChecked}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

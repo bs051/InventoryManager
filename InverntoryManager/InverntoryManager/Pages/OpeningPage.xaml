@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:InverntoryManager.MarkupExtension" 
+             mc:Ignorable="d"
+             x:Class="InverntoryManager.Pages.OpeningPage"
+             BackgroundColor="Crimson"
+             Padding="20,30"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="White">
+            <Image Source="{local:EmbeddedImage ResourceId=InverntoryManager.Image.WesternLogo.png}" 
+                   x:Name="logo" 
+                   AbsoluteLayout.LayoutBounds="0.5,0.1,0.6,0.6"
+                   AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional"/>
+            <Label 
+			    Text="Cross-platform Inventory Management app" 
+			    TextColor="Black"
+			    FontSize="15"
+                FontAttributes="Bold"
+			    HorizontalOptions="Center" 
+                AbsoluteLayout.LayoutBounds="0.5, 0.65"
+                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center"
+                         AbsoluteLayout.LayoutBounds="0.5, 0.8"
+                         AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Button 
+                    x:Name="loginBtm"
+			        Text="Sign in" 
+			        TextColor="White"
+			        BackgroundColor="Crimson"
+                    Clicked="loginBtm_Clicked"/>
+                <Button
+                    x:Name="RegisterBtm"
+			        Text="Sign up" 
+			        TextColor="White"
+			        BackgroundColor="Crimson" 
+                    Clicked="RegisterBtm_Clicked"/>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

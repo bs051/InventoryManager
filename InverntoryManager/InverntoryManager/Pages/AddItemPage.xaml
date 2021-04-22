@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="InverntoryManager.Pages.AddItemPage"
+             Title="Add new Item">
+    <ContentPage.Content>
+        <StackLayout Padding="10,20,10,10">
+            <TableView Intent="Data" >
+                <TableRoot >
+                    <TableSection Title="Name">
+                        <EntryCell x:Name="itemName" Label="Name" Placeholder="(eg Wirers)" />
+                        <EntryCell x:Name="itemStock" Label="Amount" Placeholder="(eg 0)" Keyboard="Numeric"/>
+                    </TableSection>
+                    <TableSection Title="Image">
+                        <EntryCell x:Name="pictureUrl" Label="Url(optional)"/>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="5"/>
+                                    <RowDefinition Height="350"/>
+                                    <RowDefinition Height="5"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Source={x:Reference pictureUrl}, Path=Text}" Grid.Row="1" Grid.Column="1"/>
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <StackLayout Padding="30,0,30,40">
+                <Button x:Name="add" Text="Add" BackgroundColor="Crimson" Pressed="add_Pressed" />
+                <Button x:Name="goBack" Text="Go Back" BackgroundColor="Crimson" Pressed="goBack_Pressed" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

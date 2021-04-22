@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:InverntoryManager.MarkupExtension"
+             mc:Ignorable="d"
+             x:Class="InverntoryManager.Pages.RegisterPage"
+             Title="Sign Up">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="250"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" BackgroundColor="Crimson">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="1" Grid.Column="1" Source="{local:EmbeddedImage ResourceId=InverntoryManager.Image.WesternLogo.png}"/>
+                        <Label Text="Sign up" Grid.Row="2" Grid.Column="1" TextColor="White"
+                               FontSize="25" Style="{DynamicResource TitleStyle}"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Margin="10,20,10,20">
+                    <Entry Placeholder="Username" TextColor="Gray" x:Name="userName" />
+                    <Entry Placeholder="Password" TextColor="Gray" x:Name="password" IsPassword="True"/>
+                    <Entry Placeholder="Confirm Password" TextColor="Gray" x:Name="passwordCheck" IsPassword="True"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry Placeholder="First name" Grid.Column="0" x:Name="firstName"/>
+                        <Entry Placeholder="Last name" Grid.Column="1" x:Name="lastName"/>
+                    </Grid>
+                    <Picker Title="Choose one..." x:Name="admin">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Admin</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </StackLayout>
+                <StackLayout Grid.Row="2" Margin="30,10,30,0">
+                    <Button Text="Sign up" x:Name="signUpBtm" 
+                        BackgroundColor="Crimson" TextColor="White" Clicked="signUpBtm_Clicked"/>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

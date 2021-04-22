@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="InverntoryManager.Extensions.CustomCell">
+    <Grid Padding="10,5,10,5" ColumnSpacing="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Image Source="{Binding Url}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
+        <Label Text="{Binding name}" Grid.Row="0" Grid.Column="1" FontAttributes="Bold"/>
+        <Label Text="Class" FontSize="Body"  Grid.Row="1" Grid.Column="1"/>
+        <StackLayout Grid.Column="2" VerticalOptions="Center" Grid.RowSpan="2">
+            <Label Text="Stock:" HorizontalOptions="Center" FontSize="12"/>
+            <Label Text="{Binding amount}" HorizontalOptions="Center" FontSize="12"/>
+        </StackLayout>
+        <CheckBox x:Name="itemBox" Color="Black" Grid.Column="3" Grid.RowSpan="2"
+                IsVisible="{ Binding visiable }"
+                IsChecked="{Binding selected}"/>
+</Grid>
+</ViewCell>

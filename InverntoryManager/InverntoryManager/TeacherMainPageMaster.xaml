@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:InverntoryManager.MarkupExtension"
+             mc:Ignorable="d"
+             x:Class="InverntoryManager.MainPageMaster"
+             IconImageSource="hamburger.png"
+             Title="Manager">
+    <StackLayout>
+        <ListView x:Name="MenuItemsListView"
+            SeparatorVisibility="None"
+            HasUnevenRows="true"
+            ItemsSource="{Binding MenuItems}">
+            <ListView.Header>
+                <Grid BackgroundColor="Crimson">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="1" Grid.Column="1" 
+                               Source="{local:EmbeddedImage ResourceId=InverntoryManager.Image.WesternLogo.png}"/>
+                    <Label
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    Text="Inventory Manager"
+                    Style="{DynamicResource SubtitleStyle}"/>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                  <ViewCell>
+                    <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+                      <Label VerticalOptions="FillAndExpand" 
+                            VerticalTextAlignment="Center" 
+                            Text="{Binding Title}" 
+                            d:Text="{Binding .}"
+                            FontSize="24"/>
+                    </StackLayout>
+                  </ViewCell>
+                </DataTemplate>
+              </ListView.ItemTemplate>
+        </ListView>
+      </StackLayout>
+</ContentPage>
